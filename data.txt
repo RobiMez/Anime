@@ -1,0 +1,123 @@
+
+# lit review 
+# abstract 
+# intro 
+# budget breakdown 
+
+
+
+
+
+# The girl who leapt through time [2006]
+
+
+{
+    'request_hash': 'request:search:a0baf83b2b5609633b675a35bb2e5ede2dcd2994', 
+    'request_cached': False, 'request_cache_expiry': 432000, 
+    'results': [{
+        'mal_id': 2236,
+        'url': 'https://myanimelist.net/anime/2236/Toki_wo_Kakeru_Shoujo',
+        'image_url': 'https://cdn.myanimelist.net/images/anime/1/2432.jpg?s=6c3f5019a71d693be414555453678898',
+        'title': 'Toki wo Kakeru Shoujo',
+        'airing': False,
+        'synopsis': 'Makoto Konno is in her last year of high school, but is having a hard time deciding what to do with her future. In between enduring the pressure of her teachers and killing time with her best friends,...',
+        'type': 'Movie',
+        'episodes': 1,
+        'score': 8.18,
+        'start_date': '2006-07-15T00:00:00+00:00',
+        'end_date': '2006-07-15T00:00:00+00:00',
+        'members': 647975,
+        'rated': 'G'
+        }],
+        'last_page': 20,
+        'jikan_url': 'https://api.jikan.moe/v3/search/anime?q=The girl who leapt through time [2006]&limit=1',
+        'headers': {'Server': 'nginx/1.18.0 (Ubuntu)', 'Date': 'Sat, 15 May 2021 12:26:24 GMT', 'Content-Type': 'application/json', 'Content-Length': '1742', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': '*', 'Cache-Control': 'private, must-revalidate', 'ETag': '"901a7cfd9aeb59173eb7dd6a9c12915e"', 'X-Request-Hash': 'request: search: a0baf83b2b5609633b675a35bb2e5ede2dcd2994', 'X-Request-Cached': '', 'X-Request-Cache-Ttl': '432000', 'Expires': 'Thu, 20 May 2021 12: 26: 24 GMT', 'Content-Encoding': 'gzip', 'Vary': 'Accept-Encoding', 'X-Cache-Status': 'MISS'}}
+
+
+
+
+
+        
+[{'avg_frame_rate': '30000/1001',
+  'bit_rate': '300066',
+  'bits_per_raw_sample': '8',
+  'chroma_location': 'left',
+  'closed_captions': 0,
+  'codec_long_name': 'H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10',
+  'codec_name': 'h264',
+  'codec_tag': '0x31637661',
+  'codec_tag_string': 'avc1',
+  'codec_time_base': '1001/60000',
+  'codec_type': 'video',
+  'coded_height': 576,
+  'coded_width': 1024,
+  'disposition': {'attached_pic': 0,
+                  'clean_effects': 0,
+                  'comment': 0,
+                  'default': 1,
+                  'dub': 0,
+                  'forced': 0,
+                  'hearing_impaired': 0,
+                  'karaoke': 0,
+                  'lyrics': 0,
+                  'original': 0,
+                  'timed_thumbnails': 0,
+                  'visual_impaired': 0},
+  'duration': '1425.557467',
+  'duration_ts': 42766724,
+  'has_b_frames': 1,
+  'height': 576,
+  'index': 0,
+  'is_avc': 'true',
+  'level': 31,
+  'nal_length_size': '4',
+  'nb_frames': '42724',
+  'pix_fmt': 'yuv420p',
+  'profile': 'High',
+  'r_frame_rate': '30000/1001',
+  'refs': 1,
+  'start_pts': 1001,
+  'start_time': '0.033367',
+  'tags': {'creation_time': '2014-06-11T01:46:11.000000Z',    
+           'handler_name': 'Video',
+           'language': 'und'},
+  'time_base': '1/30000',
+  'width': 1024},
+ {'avg_frame_rate': '0/0',
+  'bit_rate': '40020',
+  'bits_per_sample': 0,
+  'channel_layout': 'stereo',
+  'channels': 2,
+  'codec_long_name': 'AAC (Advanced Audio Coding)',
+  'codec_name': 'aac',
+  'codec_tag': '0x6134706d',
+  'codec_tag_string': 'mp4a',
+  'codec_time_base': '1/48000',
+  'codec_type': 'audio',
+  'disposition': {'attached_pic': 0,
+                  'clean_effects': 0,
+                  'comment': 0,
+                  'default': 1,
+                  'dub': 0,
+                  'forced': 0,
+                  'hearing_impaired': 0,
+                  'karaoke': 0,
+                  'lyrics': 0,
+                  'original': 0,
+                  'timed_thumbnails': 0,
+                  'visual_impaired': 0},
+  'duration': '1425.578667',
+  'duration_ts': 34213888,
+  'index': 1,
+  'max_bit_rate': '51656',
+  'nb_frames': '33412',
+  'profile': 'HE-AAC',
+  'r_frame_rate': '0/0',
+  'sample_fmt': 'fltp',
+  'sample_rate': '48000',
+  'start_pts': 0,
+  'start_time': '0.000000',
+  'tags': {'creation_time': '2014-06-11T01:46:12.000000Z',    
+           'handler_name': 'GPAC ISO Audio Handler',
+           'language': 'und'},
+  'time_base': '1/24000'}]
