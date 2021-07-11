@@ -2,11 +2,13 @@ from PIL import Image
 import os
 from pathlib import Path
 from animods.misc import c
+
+
+def img_sanity():
+    return True
+
+
 # Generate a an.ico file 
-
-
-
-
 def create_ico(path,source):
     """Creates a an.ico file in the specified path using image.jpg 
     

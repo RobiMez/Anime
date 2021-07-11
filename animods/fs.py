@@ -2,6 +2,9 @@ import os
 from pathlib import Path
 from animods.misc import c
 
+def fs_sanity():
+    return True
+
 def get_structure(root):
     return Path(root).rglob('*')
 
@@ -33,7 +36,10 @@ def alter_attributes(path,attribute):
     path : 
         path to your file 
     '''
-    os.system(f'attrib {path} {attribute}')
+    # https://stackoverflow.com/a/64732313/14182895
+    # thanks to this kind stranger
+    os.system(f'attrib """{path}""" {attribute}')
+
     return 'Attributes changed'
 
 def generate_lock_file(path,data):
@@ -48,9 +54,13 @@ def generate_lock_file(path,data):
             os.remove(a_l_path)
 
         lock_file = open(a_l_path,'w')
-        lock_file.write(data)
+        lock_file.write(str(data))
         lock_file.close()
-        alter_attributes(a_l_path,'+H')
+        print(a_l_path)
+        print(a_l_path)
+        
+        # print(r_l_path)
+        print(alter_attributes(a_l_path,'+H'))
         print(f'{c.green}Generated lock file on {a_path}{c.o}')
     else:
         print(f'{c.orange}{path}{c.yellow} is not a folder.{c.o}')

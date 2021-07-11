@@ -5,3 +5,7 @@ animods/__pycache__
 .vscode/settings.json
 spec.ai
 e.mkv
+build
+dist
+*.spec
+__pycache__/anicons.cpython-37.pyc

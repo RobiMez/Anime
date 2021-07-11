@@ -1,6 +1,9 @@
 import ffmpeg
 import json
 
+def fm_sanity():
+    return True
+
 
 def get_probe(path):
     probe = ffmpeg.probe(path)

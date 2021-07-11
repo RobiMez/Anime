@@ -20,22 +20,50 @@ root = Path('./devy')
 
 ''' for all folders in the root 
 
-gen lock file 
 get data on files 
 get data on folder 
+gen lock file 
 
 generate icon ( with size if possible )
 rename with size 
 
-
-
-
-
-
 '''
+def _startup_check() : 
+
+    print(f'\n{c.green}Startup checks ...{c.o}\n')
+    print(f'{c.green}\tFilesystem module : {c.o}{fs_sanity()}')
+    print(f'{c.green}\tFFempeg module : {c.o}{fm_sanity()}')
+    print(f'{c.green}\tApi module : {c.o}{api_sanity()}')
+    print(f'{c.green}\tImage module : {c.o}{img_sanity()}')
+    print(f'{c.green}\tMisc module: {c.o}{misc_sanity()}\n\n')
+
+_startup_check()
 
 
 
+for node in Path('./WATCHED').rglob('*'):
+    if node.is_dir():
+        pred = get_predictions_for_folder_name(node.name)
+        counter = 1
+        print(f'{c.blue}{node.name}{c.o}')
+        print('0 : skip')
+        for p in pred:
+            print(counter,' : ',p)
+            counter = counter +1 
+        choice = input('Choice:')
+        print(choice)
+        print(choice == 0)
+        if choice == 0 :
+            print('Skipping...')
+
+        else:
+            generate_lock_file(Path.joinpath(Path.cwd(),node),pred[int(choice)-1])
+
+# get_predictions_for_folder_name('kiss x sis')
+
+
+print(f"\n{c.purple}Exiting ... {c.o}")
+time.sleep(1)
 
 
 
