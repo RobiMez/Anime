@@ -9,3 +9,7 @@ build
 dist
 *.spec
 __pycache__/anicons.cpython-37.pyc
+data.py
+*.lock
+data.txt
+data.txt
