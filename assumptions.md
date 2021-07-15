@@ -7,3 +7,5 @@
 use non space regex 
 use incrementing patterns as a telltale
 if its constant between eps its not the ep num
+
+mkv / mp4 mixed causes issues with predison

@@ -8,7 +8,6 @@ from animods.misc import c
 def api_sanity():
     return True
 
-
 def anime_fetch_to_json(anime, limit):
     data = ji.search(search_type='anime', query=anime,
                      parameters={'limit': limit})
@@ -16,9 +15,6 @@ def anime_fetch_to_json(anime, limit):
     file = open(f'{anime}.json', 'w')
     json.dump(data, file)
     file.close()
-
-# Download the poster from jikan
-
 
 def download_poster(image_url, out_dir):
     print("[ ^>^ ] Downloading cover art :")
@@ -39,7 +35,6 @@ def download_poster(image_url, out_dir):
         i = Image.open(io.BytesIO(buffer.read()))
         i.save(os.path.join(out_dir, 'image.jpg'), quality=100)
     buffer.close()
-
 
 def get_episode_names_for_anime(mal_id):
     print(f'{c.purple}[Api] Fetch Episode names for : {mal_id}{c.o}')
@@ -80,7 +75,7 @@ def get_data_for_id(mal_id):
 
         result = json.loads(response_body)
         data = {}
-        pprint(result)
+        # pprint(result)
         
         data['title'] = result['title']
         data['mal_id'] = result['mal_id']
@@ -121,9 +116,6 @@ def get_data_for_id(mal_id):
 
         # pprint(data)
         return data
-
-
-
 
 def get_predictions_for_folder_name(folder_name):
 

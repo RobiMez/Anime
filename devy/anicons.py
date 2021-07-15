@@ -224,19 +224,14 @@ def splice_ep_name_predicions_with_data(path):
         delta = []
         for ep in data :
             prediction_data = []
-            if ep['predicted_ep_num'] == []:
-                pass
-            else:
-                prediction  = ep['predicted_ep_num']
+            prediction  = ep['predicted_ep_num']
             if lock_file_data['episode_names'] != {}:
                 try:
                     prediction_data = lock_file_data['episode_names'][int(prediction[0])]
-                    prediction_data['original'] = ep
-                    episodes[prediction[0]] = prediction_data
-                    print(f'\n{c.yellow}{prediction}{c.orange}{prediction_data}{c.o}\n')
                 except :
                     pass
-    
+            episodes[prediction[0]] = prediction_data
+            print(f'\n{c.yellow}{prediction}{c.orange}{prediction_data}{c.o}\n')
         print(f'\n{c.red}{delta}{c.o}\n')
     check_delta(lock_file_data)
 
@@ -278,12 +273,12 @@ def sanitize(dirty=''):
     # / \ : * ? > < |
     dirty = dirty.replace('/','')
     dirty = dirty.replace('\\','')
-    dirty = dirty.replace(':',' ')
+    dirty = dirty.replace(':','')
     dirty = dirty.replace('*','')
     dirty = dirty.replace('?','')
     dirty = dirty.replace('>','')
     dirty = dirty.replace('<','')
-    dirty = dirty.replace('|',' ')
+    dirty = dirty.replace('|','')
     clean = dirty
     return clean
 
@@ -311,48 +306,8 @@ def rename_folder(path):
             lfd['folder_name'] = napath.name
     generate_lock_file(napath,lfd)
 
-def rename_episodes(path):
-    lfd = get_lock(path)
-    
-    for item in lfd['episodes']:
-        original_name = lfd['episodes'][item]['original']['current_filename']
-        recomended_name = lfd['episodes'][item]['title']
-        print(f"{c.blue}Episode Rename: {c.yellow}{original_name} -> {c.green}Episode {item} - {recomended_name}.mkv{c.o}")
-
-    
-    
-    
-    
-    # fn = lfd['folder_name']
-    # t = lfd['title_english']
-    # if t == None :
-    #     t = lfd['title']
-    # t = sanitize(t)
-    # apath = Path.absolute(path)
-    # print(apath.parent)
-    # napath = Path.joinpath(apath.parent,t)
-    # print(napath)
-    # # do stuff 
-    # # ask if they want to rename the folder
-    # if fn == t : 
-    #     pass
-    # else: 
-    #     choice =input(f'Rename \n{c.yellow}{fn}{c.o} to \n{c.green}{t}{c.o}\n? (y/n)')
-    #     if choice == 'y' or choice == 'Y':
-    #         print(f'renaming becus you chose {choice}')    
-    #         os.rename(apath,napath)
-                
-    #         lfd['folder_name'] = napath.name
-    # generate_lock_file(napath,lfd)
-    
-    
-    
-    pass
-
-
-
 def generate_icon(path):
-    pass
+    
 
 main_path = './TO WATCH'
 
@@ -390,7 +345,7 @@ def main():
                     print(f'{c.green}[Lock file] File data is already fetched. {c.o}\n')
                 splice_ep_name_predicions_with_data(node)
                 rename_folder(node)
-                rename_episodes(node)
+
             else:
                 generate_predictions_and_folder_data_to_lock(node)
                 prompt_verification_from_lock(node)
@@ -398,7 +353,7 @@ def main():
                 generate_ffmpeg_data_from_lock(node)
                 splice_ep_name_predicions_with_data(node)
                 rename_folder(node)
-                rename_episodes(node)
+
 
     print(f"\n{c.purple}Exiting ... {c.o}")
     time.sleep(1)

@@ -26,49 +26,70 @@ def get_streams_from_filepath (fpath):
     return fp["streams"]
 
 def get_video_qual_from_filepath (fpath):
-    fp = ffmpeg.probe(fpath)
+    print(f'{c.purple}Probing {fpath}{c.o}')
+    fp = None
     vstreams = []
-    for stream in fp["streams"]:
-        if stream['codec_type'] == "video":
-            vstreams.append(stream['height'])
-    return vstreams
-
+    try:
+        fp = ffmpeg.probe(fpath)
+        for stream in fp["streams"]:
+            if stream['codec_type'] == "video":
+                vstreams.append(stream['height'])
+        return vstreams
+    except ffmpeg.Error as e:
+        print(f'{c.red}{e.stderr}{c.o}')
+        return 'Probe_error'
 def get_video_streams_from_filepath (fpath):
-    fp = ffmpeg.probe(fpath)
+    print(f'{c.purple}Probing {fpath}{c.o}')
+    fp = None
     vstreams = []
-    for stream in fp["streams"]:
-        if stream['codec_type'] == "video":
-            vstreams.append(stream)
-    return vstreams
-def get_video_streams_from_filepath (fpath):
-    fp = ffmpeg.probe(fpath)
-    vstreams = []
-    for stream in fp["streams"]:
-        if stream['codec_type'] == "video":
-            vstreams.append(stream)
-    return vstreams
+    try:
+        fp = ffmpeg.probe(fpath)
+        for stream in fp["streams"]:
+            if stream['codec_type'] == "video":
+                vstreams.append(stream)
+        return vstreams
+    except ffmpeg.Error as e:
+        print(f'{c.red}{e.stderr}{c.o}')
+        return 'Probe_error'
 
 def get_audio_streams_from_filepath (fpath):
     print(f'{c.purple}Probing {fpath}{c.o}')
-    fp = ffmpeg.probe(fpath)
+    fp = None
     astreams = []
-    for stream in fp["streams"]:
-        if stream['codec_type'] == "audio":
-            astreams.append(stream)
-    return astreams
+    try:
+        fp = ffmpeg.probe(fpath)
+        for stream in fp["streams"]:
+            if stream['codec_type'] == "audio":
+                astreams.append(stream)
+        return astreams
+    except ffmpeg.Error as e:
+        print(f'{c.red}{e.stderr}{c.o}')
+        return 'Probe_error'
 
 def get_subtitle_streams_from_filepath (fpath):
-    fp = ffmpeg.probe(fpath)
+    print(f'{c.purple}Probing {fpath}{c.o}')
+    fp = None
     sstreams = []
-    for stream in fp["streams"]:
-        if stream['codec_type'] == "subtitle":
-            sstreams.append(stream)
-    return sstreams
+    try:
+        fp = ffmpeg.probe(fpath)
+        for stream in fp["streams"]:
+            if stream['codec_type'] == "subtitle":
+                sstreams.append(stream)
+        return sstreams
+    except ffmpeg.Error as e:
+        print(f'{c.red}{e.stderr}{c.o}')
+        return 'Probe_error'
 
 def get_attachment_streams_from_filepath (fpath):
-    fp = ffmpeg.probe(fpath)
-    atstreams = []
-    for stream in fp["streams"]:
-        if stream['codec_type'] == "attachment":
-            atstreams.append(stream)
-    return atstreams
+    print(f'{c.purple}Probing {fpath}{c.o}')
+    fp = None
+    astreams = []
+    try:
+        fp = ffmpeg.probe(fpath)
+        for stream in fp["streams"]:
+            if stream['codec_type'] == "attachment":
+                astreams.append(stream)
+        return astreams
+    except ffmpeg.Error as e:
+        print(f'{c.red}{e.stderr}{c.o}')
+        return 'Probe_error'

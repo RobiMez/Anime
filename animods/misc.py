@@ -1,7 +1,6 @@
 
 def misc_sanity():
     return True
-
 class c:
     black = '\033[30m'
     red = '\033[31m'
