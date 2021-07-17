@@ -1,6 +1,4 @@
 
-def misc_sanity():
-    return True
 class c:
     black = '\033[30m'
     red = '\033[31m'
@@ -28,3 +26,11 @@ class c:
 def get_ignored ():
     file = file.open('.anignore','r')
     print(file)
+    
+
+def printProgressBar(iteration,total, prefix='Progress:', suffix='Complete ', decimals=1, length=25, fill='█', unfill='–', printEnd="\r"):
+    percent = ("{0:." + str(decimals) + "f}").format(100 *(iteration / float(total)))
+    filledLength = int(length * iteration // total)
+    bar = fill * filledLength + unfill * (length - filledLength)
+    # Progress bar printing 
+    print(f'\r{prefix} │{bar}│ {percent}% {suffix}', end=printEnd)

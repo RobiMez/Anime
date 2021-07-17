@@ -1,11 +1,32 @@
 from PIL import Image
 import os
+import tempfile
+import time
+import requests
+import io
 from pathlib import Path
-from animods.misc import c
+from animods.misc import *
 
 
-def img_sanity():
-    return True
+def download_poster(image_url, out_dir):
+    print("  [ Api ] Downloading cover art :")
+    buffer = tempfile.SpooledTemporaryFile(max_size=1e9)
+    r = requests.get(image_url, stream=True)
+    if r.status_code == 200:
+        downloaded = 0
+        filesize = int(r.headers['content-length'])
+        for chunk in r.iter_content(chunk_size=1024):
+            downloaded += len(chunk)
+            buffer.write(chunk)
+            # print(printprogressBar(downloaded))
+            printProgressBar(downloaded, filesize)
+            time.sleep(0.007)
+            # print(downloaded/filesize)
+        buffer.seek(0)
+        print()
+        i = Image.open(io.BytesIO(buffer.read()))
+        i.save(os.path.join(out_dir, 'image.jpg'), quality=100)
+    buffer.close()
 
 # Generate a an.ico file 
 def create_ico(path,source):
@@ -18,7 +39,7 @@ def create_ico(path,source):
     """
     # current_folder = Path.cwd()
     current_folder = Path(path)
-    oi_path = Path.joinpath(current_folder, 'c.jpg')
+    oi_path = Path.joinpath(current_folder, 'image.jpg')
     
     if oi_path.exists():
         print(f'{c.purple}Generating icon from : {oi_path}{c.o}')
@@ -57,5 +78,21 @@ def create_ico(path,source):
     else:
         print(f'\n{c.red}Origin image not found {oi_path}{c.o}\n')
 
-
+def create_config(path):
+    print(f'{c.purple}Generating config for : {path}{c.o}')
+    path = str(path)
+    try:
+        f = open(path+r"\desktop.in", "w")
+        f.write(f'[.ShellClassInfo]\nIconResource=an.ico,0\nConfirmFileOp=0')
+        f.close()
+        os.rename(path+r'\desktop.in',path+r'\desktop.ini')
+    except(FileExistsError):
+        print('[ >_< ] file already exists ... Remaking')
+        os.remove(path+r'\desktop.in')
+        os.remove(path+r'\desktop.ini')
+        f = open(path+r"\desktop.in", "w")
+        f.write(f'[.ShellClassInfo]\nIconResource=an.ico,0\nConfirmFileOp=0')
+        f.close()
+        os.rename(path+r'\desktop.in',path+r'\desktop.ini')
+        print('[ ^_^ ] Remade icon config ')
 

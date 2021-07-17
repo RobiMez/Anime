@@ -2,8 +2,6 @@ import ffmpeg
 import json
 from animods.misc import c
 
-def fm_sanity():
-    return True
 
 
 def get_probe(path):
@@ -15,6 +13,42 @@ def save_probe_to_json(path):
     file = open(f'{path}.json','w')
     json.dump(probe,file)
     file.close()
+
+def get_file_data(path):
+    filedata = {}
+
+    video_streams = []
+    video_quality = []
+    audio_streams = []
+    subtitle_streams = []
+    attachment_streams = []
+    try:
+        fp = ffmpeg.probe(path)
+        for stream in fp["streams"]:
+            if stream['codec_type'] == "video":
+                video_streams.append(stream)
+                video_quality.append(stream['height'])
+            elif stream['codec_type'] == "audio":
+                audio_streams.append(stream)
+            elif stream['codec_type'] == "subtitle":
+                subtitle_streams.append(stream)
+            elif stream['codec_type'] == "attachment":
+                attachment_streams.append(stream)
+            else:
+                pass
+    except ffmpeg.Error as e:
+        print(f'{c.red}{e.stderr}{c.o}')
+        return 'Probe_error'
+    
+    filedata['video_streams'] = video_streams
+    filedata['video_quality'] = video_quality
+    filedata['audio_streams'] = audio_streams
+    filedata['subtitle_streams'] = subtitle_streams
+    filedata['attachment_streams'] = attachment_streams
+    return filedata
+    
+
+
 
 
 def get_num_streams_from_filepath (fpath):

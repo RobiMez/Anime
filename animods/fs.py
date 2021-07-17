@@ -3,8 +3,6 @@ from pathlib import Path
 from animods.misc import c
 import collections
 
-def fs_sanity():
-    return True
 
 def get_structure(root):
     return Path(root).rglob('*')
